@@ -54,7 +54,7 @@ function gameLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (const id in players) {
     const p = players[id];
-    ctx.fillStyle = id === myId ? "blue" : "red";
+    ctx.fillStyle = id === myId ? "green" : "red";
     ctx.fillRect(p.x, p.y, 20, 20);
   }
   requestAnimationFrame(gameLoop);

@@ -1,6 +1,8 @@
 "use strict";
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+const playerImage = new Image();
+playerImage.src = "portal0.png";
 const protocol = location.protocol === "https:" ? "wss:" : "ws:";
 const socket = new WebSocket(`${protocol}//${location.host}/ws`);
 let myId = null;
@@ -50,8 +52,10 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (const id in players) {
         const p = players[id];
-        ctx.fillStyle = id === myId ? "yellow" : "green";
-        ctx.fillRect(p.x, p.y, 20, 20);
+        ctx.drawImage(playerImage, p.x, p.y, 20, 20);
+        console.log(playerImage.src);
+        // ctx.fillStyle = id === myId ? "yellow" : "green";
+        // ctx.fillRect(p.x, p.y, 20, 20);
     }
     requestAnimationFrame(gameLoop);
 }

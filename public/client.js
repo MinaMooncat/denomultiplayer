@@ -52,10 +52,10 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (const id in players) {
         const p = players[id];
-        ctx.drawImage(playerImage, p.x, p.y, 20, 20);
-        console.log(playerImage.src);
-        // ctx.fillStyle = id === myId ? "yellow" : "green";
-        // ctx.fillRect(p.x, p.y, 20, 20);
+        // ctx.drawImage(playerImage, p.x, p.y, 20, 20);
+        // console.log(playerImage.src);
+        ctx.fillStyle = id === myId ? "yellow" : "green";
+        ctx.fillRect(p.x, p.y, 20, 20);
     }
     requestAnimationFrame(gameLoop);
 }

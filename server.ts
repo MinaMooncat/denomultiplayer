@@ -54,11 +54,16 @@ Deno.serve((request) => {
       const msg = JSON.parse(event.data);
       if (msg.type === "move") {
         const p = players[id];
-        if (!p) return;
+        if(!p) return;
         if (msg.dir === "up") p.y -= 10;
         if (msg.dir === "down") p.y += 10;
         if (msg.dir === "left") p.x -= 10;
         if (msg.dir === "right") p.x += 10;
+        if (p.y > 400) p.y = 0;
+        if (p.y < 0) p.y = 400;
+        if (p.x < 0) p.x = 600;
+        if (p.x > 600) p.x = 600;
+
         broadcast({ type: "update", player: p });
       }
     });
